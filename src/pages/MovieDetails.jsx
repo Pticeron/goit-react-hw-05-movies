@@ -13,7 +13,7 @@ console.log(location);
   return (
     <>
     <h1>MovieDetails: {movieId} </h1>
-    <Link to="/movies">back to go</Link>
+    <Link to={location.state.from}>back to go</Link>
     <ul>
       <li>
         <Link to='cast'>Cast</Link>
