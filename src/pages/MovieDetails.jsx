@@ -1,16 +1,19 @@
-import { Link, Outlet, useParams } from 'react-router-dom';
+import { Link, Outlet, useParams, useLocation } from 'react-router-dom';
 // import { useEffect } from "react";
 
 const MovieDetails = () => {
   const { movieId } = useParams();
+  const location = useLocation();
 
   //     useEffect(() => {
   // // http запит
   //     }, [])
+console.log(location);
 
   return (
     <>
     <h1>MovieDetails: {movieId} </h1>
+    <Link to="/movies">back to go</Link>
     <ul>
       <li>
         <Link to='cast'>Cast</Link>
