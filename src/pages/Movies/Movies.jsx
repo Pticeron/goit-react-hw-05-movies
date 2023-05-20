@@ -5,7 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import MoviesList from 'components/MoviesList/MoviesList';
 import { searchMovies } from 'services/api-movies';
 import Loader from 'components/Loader/Loader';
-import Searchbar from 'component/Searchbar/Searchbar';
+import Searchbar from 'components/Searchbar/Searchbar';
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
@@ -13,7 +13,6 @@ const Movies = () => {
   const [loading, setLoading] = useState(false);
 
   const [searchParams, setSearchParams] = useSearchParams();
-  // const movieId = searchParams.get('movieId') ?? '';
   const query = searchParams.get('query');
 
   useEffect(() => {

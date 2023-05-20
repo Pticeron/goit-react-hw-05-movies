@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import { fetchTrendingMovies } from 'servisec/api-movies';
+import { fetchTrendingMovies } from 'services/api-movies';
 import Loader from 'components/Loader/Loader';
-import MoviesList from 'component/MoviesList/';
+import MoviesList from 'components/MoviesList/MoviesList';
 import styles from './Home.module.css';
 
 

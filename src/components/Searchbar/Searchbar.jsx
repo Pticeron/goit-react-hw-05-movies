@@ -9,8 +9,8 @@ const Searchbar = ({ onSubmit }) => {
     setQuery(target.value);
   };
 
-  const handleSubmit = evt => {
-    evt.preventDefault();
+  const handleSubmit = event => {
+    event.preventDefault();
     onSubmit(query);
     setQuery('');
   };
@@ -21,8 +21,12 @@ const Searchbar = ({ onSubmit }) => {
         <input>
           className={styles.SearchForm__input}
           onChange={handleChange}
-          name="query" type="text" autoComplete="off" autoFocus
-          placeholder="Search movie" value={query}
+          name="query" 
+          type="text" 
+          autoComplete="off" 
+          autoFocus
+          placeholder="Search movie" 
+          value={query}
         </input>
         <button type="submit" className={styles.SearchForm__button}>
           <span className={styles.SearchForm__button__label}>Search</span>
