@@ -15,7 +15,7 @@ export const fetchTrendingMovies = async () => {
     return data;
 }
 
-export const searchMovies = async guery => {
+export const searchMovies = async query => {
     const { data } = await instance.get('search/movie', {
         params: {
             page: 1,

@@ -1,47 +1,58 @@
-import { useState } from 'react';
-import { Link, useLocation, useSearchParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import MoviesList from 'components/MoviesList/MoviesList';
+import { searchMovies } from 'services/api-movies';
+import Loader from 'components/Loader/Loader';
+import Searchbar from 'component/Searchbar/Searchbar';
 
 const Movies = () => {
-  const [movies, setMovies] = useState([
-    'movie1',
-    'movie2',
-    'movie3',
-    'movie4',
-    'movie5',
-  ]);
-const location = useLocation();
+  const [movies, setMovies] = useState([]);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const [searchParams, setSearchParams] = useSearchParams();
-  const movieId = searchParams.get('movieId') ?? '';
+  // const movieId = searchParams.get('movieId') ?? '';
+  const query = searchParams.get('query');
 
-  //     useEffect(() => {
-  // // http запит
-  //     }, [])
-
-  const updateQueryString = evt => {
-    const movieIdValue = evt.target.value;
-    if (movieIdValue === '') {
-      return setSearchParams({});
+  useEffect(() => {
+    if (!query) {
+      return;
     }
-    setSearchParams({ movieId: movieIdValue });
+
+    const fetchSearchMovies = async () => {
+      setLoading(true);
+      try {
+        const { results } = searchMovies(query);
+        if (results.length === 0) {
+          toast.error('There are no movies matching your request.');
+        }
+        setMovies(results);
+      } catch (error) {
+        setError(error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchSearchMovies();
+  }, [query]);
+
+  const searchMoviesByQuery = newSearch => {
+    if (newSearch.trim() === '') {
+      toast.error('Enter a search term.');
+    }
+    setMovies([]);
+    setSearchParams({ query: newSearch });
   };
-
-  const visibleMovies = movies.filter(movie => movie.includes(movieId));
-
-  console.log(location);
 
   return (
     <div>
-      <input type="text" value={movieId} onChange={updateQueryString} />
-      <ul>
-        {visibleMovies.map(movie => {
-          return (
-            <li key={movie}>
-              <Link to={`${movie}`} state={{ from: location }}>{movie}</Link>
-            </li>
-          );
-        })}
-      </ul>
+      <Searchbar onSubmit={searchMoviesByQuery} />
+      <ToastContainer position="top-right" autoClose={3000} />
+      {loading && <Loader />}
+      {movies && <MoviesList movies={movies} />}
+      {error && <p>Something goes wrong</p>}
     </div>
   );
 };
