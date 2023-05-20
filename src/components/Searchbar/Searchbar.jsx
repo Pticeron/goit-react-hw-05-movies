@@ -1,15 +1,39 @@
-const Searchbar = () => {
+import { useState } from 'react';
+import styles from './Searchbar.module.css';
+import PropTypes from 'prop-types';
 
+const Searchbar = ({ onSubmit }) => {
+  const [query, setQuery] = useState('');
+
+  const handleChange = ({ target }) => {
+    setQuery(target.value);
+  };
+
+  const handleSubmit = evt => {
+    evt.preventDefault();
+    onSubmit(query);
+    setQuery('');
+  };
+
+  return (
+    <div className={styles.searchbar}>
+      <form className={styles.searchForm} onSubmit={handleSubmit}>
+        <input>
+          className={styles.SearchForm__input}
+          onChange={handleChange}
+          name="query" type="text" autoComplete="off" autoFocus
+          placeholder="Search movie" value={query}
+        </input>
+        <button type="submit" className={styles.SearchForm__button}>
+          <span className={styles.SearchForm__button__label}>Search</span>
+        </button>
+      </form>
+    </div>
+  );
 };
-{/* <input type="text" value={movieId} onChange={updateQueryString} />
-      <ul>
-        {visibleMovies.map(movie => {
-          return (
-            <li key={movie}>
-              <Link to={`${movie}`} state={{ from: location }}>{movie}</Link>
-            </li>
-          );
-        })}
-      </ul> */}
 
 export default Searchbar;
+
+Searchbar.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};
