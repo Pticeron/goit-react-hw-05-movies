@@ -5,7 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import MoviesList from 'components/MoviesList/MoviesList';
 import { searchMovies } from 'services/api-movies';
 import Loader from 'components/Loader/Loader';
-import Searchbar from 'component/Searchbar/Searchbar';
+// import Searchbar from 'component/Searchbar/Searchbar';
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
@@ -48,7 +48,7 @@ const Movies = () => {
 
   return (
     <div>
-      <Searchbar onSubmit={searchMoviesByQuery} />
+      {/* <Searchbar onSubmit={searchMoviesByQuery} /> */}
       <ToastContainer position="top-right" autoClose={3000} />
       {loading && <Loader />}
       {movies && <MoviesList movies={movies} />}

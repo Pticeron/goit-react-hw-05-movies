@@ -4,8 +4,6 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchMovieCredits, IMAGE_URL } from 'services/api-movies';
 
-
-
 const Cast = () => {
 const [actors, setActors] = useState([]); 
 const [error, setError] = useState(null);
