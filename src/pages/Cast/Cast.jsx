@@ -38,7 +38,7 @@ const CastPage = () => {
               src={
                 actor.profile_path
                   ? IMAGE_URL + actor.profile_path
-                  : `https://bitsofco.de/content/images/2018/12/broken-1.png`
+                  : `Content not found`
               }
               alt={actor.original_name}
             />
