@@ -18,16 +18,16 @@ const Searchbar = ({ onSubmit }) => {
   return (
     <div className={styles.searchbar}>
       <form className={styles.searchForm} onSubmit={handleSubmit}>
-        <input>
+        <input
           className={styles.SearchForm__input}
           onChange={handleChange}
-          name="query" 
-          type="text" 
-          autoComplete="off" 
+          name="query"
+          type="text"
+          autoComplete="off"
           autoFocus
-          placeholder="Search movie" 
+          placeholder="Search movie"
           value={query}
-        </input>
+        ></input>
         <button type="submit" className={styles.SearchForm__button}>
           <span className={styles.SearchForm__button__label}>Search</span>
         </button>

@@ -14,20 +14,19 @@ import { useEffect, useState } from 'react';
 
 const MovieDetails = () => {
   const [movie, setMovie] = useState(null);
+  const { movieId } = useParams();
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const { movieId } = useParams();
   const location = useLocation();
   const navigate = useNavigate();
-
   const from = location.state?.from || 'movies';
 
   useEffect(() => {
     const getDetailsMovie = async () => {
       setLoading(true);
       try {
-        const data = fetchMovieDetails(movieId);
+        const data = await fetchMovieDetails(movieId);
         setMovie(data);
       } catch (error) {
         setError(error.message);
@@ -79,6 +78,7 @@ const MovieDetails = () => {
                   className={styles.pictureMovie}
                 />
               </div>
+
               <div>
                 <h2 className={styles.title}>{movie.title}</h2>
                 <p>User Score: {`${movie.vote_average.toFixed(1)}`}</p>
@@ -88,6 +88,7 @@ const MovieDetails = () => {
                 <p>{`${movie.genres.map(genre => genre.name).join(' / ')}`}</p>
               </div>
             </div>
+            <hr />
 
             <div>
               <h3>Additional information</h3>

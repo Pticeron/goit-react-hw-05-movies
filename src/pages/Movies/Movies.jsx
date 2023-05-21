@@ -23,7 +23,7 @@ const Movies = () => {
     const fetchSearchMovies = async () => {
       setLoading(true);
       try {
-        const { results } = searchMovies(query);
+        const { results } = await searchMovies(query);
         if (results.length === 0) {
           toast.error('There are no movies matching your request.');
         }

@@ -11,26 +11,23 @@ const MoviesDetails = lazy(() => import('./pages/MovieDetails/MovieDetails'));
 const Cast = lazy(() => import('./pages/Cast/Cast'));
 const Reviews = lazy(() => import('./pages/Reviews/Reviews'));
 
+const App = () => {
+  return (
+    <Container>
+      <Navigation />
+      <Suspense fallback={<Loader />}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/movies" element={<Movies />} />
+          <Route path="/movies/:movieId" element={<MoviesDetails />}>
+            <Route path="cast" element={<Cast />} />
+            <Route path="reviews" element={<Reviews />} />
+          </Route>
 
-export const App = () => {
-    return (
-      <Container>
-       <Navigation />
-       <Suspense fallback={<Loader />}>
-       <Routes>
-      <Route path="/" element={<Home />}>
-        <Route path="/movies" element={<Movies />} />
-        <Route path="/movies/:movieId" element={<MoviesDetails />}>
-          <Route path="cast" element={<Cast />} />
-          <Route path="reviews" element={<Reviews />} />
-        </Route>
-        <Route path="*" element={<Navigate to="/" />} />
-      </Route>
-    </Routes>
-       </Suspense>
-
-      </Container>
-    
+          <Route path="*" element={<Navigate to="/" />} />
+        </Routes>
+      </Suspense>
+    </Container>
   );
 };
 export default App;

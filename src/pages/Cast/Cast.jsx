@@ -5,12 +5,12 @@ import { useParams } from 'react-router-dom';
 import { fetchMovieCredits, IMAGE_URL } from 'services/api-movies';
 
 const Cast = () => {
-const [actors, setActors] = useState([]); 
-const [error, setError] = useState(null);
-const [loading, setLoading] = useState(false); 
-const { movieId } = useParams(); 
+  const [actors, setActors] = useState([]);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const { movieId } = useParams();
 
-useEffect(() => {
+  useEffect(() => {
     const getMovieCredits = async () => {
       setLoading(true);
       try {
@@ -27,11 +27,11 @@ useEffect(() => {
 
   return (
     <div>
-        {loading && <Loader />}
-        {error && <p>Something goes wrong</p>}
-        <ul className={styles.list}>
+      {loading && <Loader />}
+      {error && <p>Something goes wrong</p>}
+      <ul className={styles.list}>
         {actors.map(actor => (
-            <li className={styles.item} key={actor.id}>
+          <li className={styles.item} key={actor.id}>
             <img
               className={styles.foto}
               width="200px"
@@ -46,9 +46,9 @@ useEffect(() => {
               <p>{actor.name}</p>
               <p>Character: {actor.character}</p>
             </div>
-            </li>
+          </li>
         ))}
-        </ul>
+      </ul>
     </div>
   );
 };

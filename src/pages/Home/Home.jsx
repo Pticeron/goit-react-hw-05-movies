@@ -4,7 +4,6 @@ import Loader from 'components/Loader/Loader';
 import MoviesList from 'components/MoviesList/MoviesList';
 import styles from './Home.module.css';
 
-
 const Home = () => {
   const [movies, setMovies] = useState([]);
   const [error, setError] = useState(null);
