@@ -4,7 +4,7 @@ import Loader from 'components/Loader/Loader';
 import MoviesList from 'components/MoviesList/MoviesList';
 import styles from './Home.module.css';
 
-const Home = () => {
+const HomePage = () => {
   const [movies, setMovies] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -34,4 +34,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default HomePage;

@@ -12,7 +12,7 @@ import { BiCaretLeftCircle } from 'react-icons/bi';
 import { IconContext } from 'react-icons';
 import { useEffect, useState } from 'react';
 
-const MovieDetails = () => {
+const MovieDetailsPage = () => {
   const [movie, setMovie] = useState(null);
   const { movieId } = useParams();
   const [error, setError] = useState(null);
@@ -63,15 +63,14 @@ const MovieDetails = () => {
             </IconContext.Provider>
             <span>Go back</span>
           </button>
-
           <div className={styles.container}>
-            <div className={styles.movieDetalis}>
+            <div className={styles.movieDetails}>
               <div className={styles.movieImg}>
                 <img
                   src={
                     movie.poster_path
                       ? IMAGE_URL + movie.poster_path
-                      : `https://bitsofco.de/content/images/2018/12/broken-1.png`
+                      : `Image Not Found`
                   }
                   alt={movie.original_title}
                   widht="300px"
@@ -118,4 +117,4 @@ const MovieDetails = () => {
   );
 };
 
-export default MovieDetails;
+export default MovieDetailsPage;

@@ -4,12 +4,12 @@ import { fetchMovieReviews } from 'services/api-movies';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-const Reviews = () => {
+const ReviewsPage = () => {
+  const { movieId } = useParams();
   const [reviews, setReviews] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
-  const { movieId } = useParams();
-
+  
   useEffect(() => {
     const getMovieReviews = async () => {
       setLoading(true);
@@ -27,8 +27,8 @@ const Reviews = () => {
 
   return (
     <>
+     {error && <p>Something goes wrong</p>}
       {loading && <Loader />}
-      {error && <p>Something goes wrong</p>}
       {reviews.length !== 0 && (
         <div>
           <ul className={styles.reviewslist}>
@@ -48,4 +48,4 @@ const Reviews = () => {
   );
 };
 
-export default Reviews;
+export default ReviewsPage;

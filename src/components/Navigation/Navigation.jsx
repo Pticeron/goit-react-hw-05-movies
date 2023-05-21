@@ -1,7 +1,7 @@
 import styles from './Navigation.module.css';
 import { NavLink } from 'react-router-dom';
 
-const Navigation = () => {
+const Navigation = () => (
   <nav>
     <NavLink
       className={({ isActive }) => (isActive ? styles.active : styles.link)}
@@ -15,7 +15,7 @@ const Navigation = () => {
     >
       Movies
     </NavLink>
-  </nav>;
-};
+  </nav>
+);
 
 export default Navigation;

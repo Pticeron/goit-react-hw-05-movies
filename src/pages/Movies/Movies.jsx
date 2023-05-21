@@ -4,14 +4,14 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import MoviesList from 'components/MoviesList/MoviesList';
 import { searchMovies } from 'services/api-movies';
-import Loader from 'components/Loader/Loader';
 import Searchbar from 'components/Searchbar/Searchbar';
+import Loader from 'components/Loader/Loader';
 
-const Movies = () => {
+
+const MoviesPage = () => {
   const [movies, setMovies] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
-
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('query');
 
@@ -29,7 +29,7 @@ const Movies = () => {
         }
         setMovies(results);
       } catch (error) {
-        setError(error.message);
+        setError(error.massage);
       } finally {
         setLoading(false);
       }
@@ -56,4 +56,4 @@ const Movies = () => {
   );
 };
 
-export default Movies;
+export default MoviesPage;

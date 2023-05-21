@@ -4,11 +4,11 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchMovieCredits, IMAGE_URL } from 'services/api-movies';
 
-const Cast = () => {
+const CastPage = () => {
+  const { movieId } = useParams();
   const [actors, setActors] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
-  const { movieId } = useParams();
 
   useEffect(() => {
     const getMovieCredits = async () => {
@@ -53,4 +53,4 @@ const Cast = () => {
   );
 };
 
-export default Cast;
+export default CastPage;
