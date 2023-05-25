@@ -38,7 +38,7 @@ const CastPage = () => {
               src={
                 actor.profile_path
                   ? IMAGE_URL + actor.profile_path
-                  : `Content not found`
+                  : 'https://motivatevalmorgan.com/wp-content/uploads/2016/06/default-movie.jpg'
               }
               alt={actor.original_name}
             />

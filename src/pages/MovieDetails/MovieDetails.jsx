@@ -70,7 +70,7 @@ const MovieDetailsPage = () => {
                   src={
                     movie.poster_path
                       ? IMAGE_URL + movie.poster_path
-                      : `Image Not Found`
+                      : 'https://motivatevalmorgan.com/wp-content/uploads/2016/06/default-movie.jpg'
                   }
                   alt={movie.original_title}
                   widht="300px"
